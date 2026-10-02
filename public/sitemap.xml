@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://pageflex.example/</loc></url>
+  <url><loc>https://pageflex.example/#/tools</loc></url>
+  <url><loc>https://pageflex.example/#/tools/edit-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/merge-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/split-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/compress-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/protect-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/unlock-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/organize-pages</loc></url>
+  <url><loc>https://pageflex.example/#/tools/crop-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/watermark-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/page-numbers</loc></url>
+  <url><loc>https://pageflex.example/#/tools/edit-metadata</loc></url>
+  <url><loc>https://pageflex.example/#/tools/pdf-to-image</loc></url>
+  <url><loc>https://pageflex.example/#/tools/image-to-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/pdf-to-text</loc></url>
+  <url><loc>https://pageflex.example/#/tools/ocr-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/redact-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/sign-pdf</loc></url>
+  <url><loc>https://pageflex.example/#/tools/fill-pdf-form</loc></url>
+  <url><loc>https://pageflex.example/#/privacy</loc></url>
+  <url><loc>https://pageflex.example/#/terms</loc></url>
+  <url><loc>https://pageflex.example/#/about</loc></url>
+  <url><loc>https://pageflex.example/#/contact</loc></url>
+</urlset>

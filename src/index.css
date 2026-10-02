@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * PageFlex theme – colours taken from Anthropic's Claude palette:
+ *   Pampas #F4F3EE · Ivory #FAF9F5 · Oat #E8E6DC · Cloudy #B1ADA1 · Slate #141413
+ *   Crail #C15F3C (primary) · Clay #D97757 (accent) · Kraft #D4A27F · Manilla #EBDBBC
+ * The app's utility classes use `indigo-*` (accent) and `slate-*` (neutrals); both scales are remapped here so every
+ * screen follows the palette without per-component colour edits.
+ * Typeface: a monospace stack everywhere (system fonts only: no font files, no CDN, no licence questions).
+ */
+@theme {
+  --font-sans: "JetBrains Mono", "SF Mono", ui-monospace, SFMono-Regular, "Cascadia Code", "Roboto Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-mono: "JetBrains Mono", "SF Mono", ui-monospace, SFMono-Regular, "Cascadia Code", "Roboto Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --color-white: #fffdfa;
+
+  /* accent: Crail / Clay */
+  --color-indigo-50: #fbf1ec;
+  --color-indigo-100: #f6e1d8;
+  --color-indigo-200: #edc4b1;
+  --color-indigo-300: #e3a38a;
+  --color-indigo-400: #dc8a6c;
+  --color-indigo-500: #d97757;
+  --color-indigo-600: #c15f3c;
+  --color-indigo-700: #a24d30;
+  --color-indigo-800: #833f29;
+  --color-indigo-900: #6a3524;
+  --color-indigo-950: #3a1b11;
+
+  /* neutrals: warm greys (Ivory → Slate) */
+  --color-slate-50: #faf9f5;
+  --color-slate-100: #f0eee6;
+  --color-slate-200: #e8e6dc;
+  --color-slate-300: #d1cfc5;
+  --color-slate-400: #b1ada1;
+  --color-slate-500: #87867f;
+  --color-slate-600: #5e5d59;
+  --color-slate-700: #3d3d3a;
+  --color-slate-800: #262624;
+  --color-slate-900: #1f1e1d;
+  --color-slate-950: #141413;
+
+  /* animations */
+  --animate-fade-in: pf-fade-in 0.35s ease-out both;
+  --animate-fade-up: pf-fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pop: pf-pop 0.28s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+  --animate-slide-in: pf-slide-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-float: pf-float 6s ease-in-out infinite;
+  --animate-drift: pf-drift 18s ease-in-out infinite;
+  --animate-pulse-ring: pf-ring 1.6s ease-out infinite;
+  --animate-blink: pf-blink 1.1s steps(2, start) infinite;
+
+  @keyframes pf-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes pf-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pf-pop {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pf-slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pf-float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+      transform: translateY(-9px) rotate(3deg);
+    }
+  }
+  @keyframes pf-drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(40px, -24px) scale(1.08);
+    }
+    66% {
+      transform: translate(-30px, 20px) scale(0.94);
+    }
+  }
+  @keyframes pf-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(193, 95, 60, 0.38);
+    }
+    100% {
+      box-shadow: 0 0 0 16px rgba(193, 95, 60, 0);
+    }
+  }
+  @keyframes pf-blink {
+    to {
+      visibility: hidden;
+    }
+  }
+}
+
+:root {
+  color-scheme: light;
+  --pf-bg: #f4f3ee;
+  --pf-ink: #141413;
+}
+.dark {
+  color-scheme: dark;
+  --pf-bg: #191918;
+  --pf-ink: #ece9df;
+}
+
+html {
+  font-size: 15px; /* monospace is wider than proportional type: a slightly smaller root keeps the layouts balanced */
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-feature-settings: "calt" 1, "liga" 0;
+  letter-spacing: -0.012em;
+  background: var(--pf-bg);
+  color: var(--pf-ink);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.035em;
+}
+
+::selection {
+  background: rgba(217, 119, 87, 0.32);
+}
+
+:focus-visible {
+  outline: 2px solid #c15f3c;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d1cfc5 transparent;
+}
+.dark * {
+  scrollbar-color: #3d3d3a transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- feedback micro-interactions ---------- */
+button:not(:disabled),
+[role="tab"],
+[role="menuitem"],
+a {
+  transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease, opacity 0.2s ease;
+}
+button:not(:disabled):active {
+  transform: scale(0.96);
+}
+.lift {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, border-color 0.2s ease;
+}
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -12px rgba(193, 95, 60, 0.35);
+}
+.lift:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* animated stripes for progress bars */
+.bar-shimmer {
+  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.28) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.28) 50%, rgba(255, 255, 255, 0.28) 75%, transparent 75%);
+  background-size: 28px 28px;
+  animation: pf-stripes 0.9s linear infinite;
+}
+@keyframes pf-stripes {
+  to {
+    background-position: 28px 0;
+  }
+}
+
+/* success tick that draws itself */
+.tick-draw {
+  stroke-dasharray: 26;
+  stroke-dashoffset: 26;
+  animation: pf-draw 0.55s 0.15s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+@keyframes pf-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* hero: soft drifting colour blobs behind the headline */
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.dark .hero-blob {
+  opacity: 0.22;
+}
+
+/* a page canvas fades in once it has rendered */
+.page-canvas {
+  animation: pf-fade-in 0.4s ease-out both;
+}
+
+.page-shadow {
+  box-shadow: 0 1px 2px rgba(20, 20, 19, 0.18), 0 10px 28px rgba(20, 20, 19, 0.14);
+}
+
+.overlay-svg text {
+  user-select: none;
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+/*
+ * Editor accent bridge: the SVG editing layers (selection handles, hover boxes) carry hard-coded indigo presentation
+ * attributes. CSS wins over presentation attributes, so they are re-coloured to the Crail accent here.
+ */
+svg [stroke="#4f46e5"] {
+  stroke: #c15f3c;
+}
+svg [fill="#4f46e5"] {
+  fill: #c15f3c;
+}
+svg [fill="rgba(79,70,229,0.14)"] {
+  fill: rgba(193, 95, 60, 0.14);
+}
+svg [fill="rgba(79,70,229,0.28)"] {
+  fill: rgba(193, 95, 60, 0.28);
+}
+svg [fill="rgba(79,70,229,0.18)"] {
+  fill: rgba(193, 95, 60, 0.18);
+}
+svg [fill="rgba(79,70,229,0.05)"] {
+  fill: rgba(193, 95, 60, 0.05);
+}
+svg [stroke="rgba(79,70,229,0.35)"] {
+  stroke: rgba(193, 95, 60, 0.35);
+}
