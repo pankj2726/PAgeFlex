@@ -51,6 +51,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <a className="hover:text-indigo-600 hover:underline" href="#/contact">Contact</a>
             <button className="hover:text-indigo-600 hover:underline" onClick={() => navigate("/tools")}>All tools</button>
           </div>
+          <p className="mt-4 text-xs text-slate-500">
+            Made by {SITE.author} ·{" "}
+            <a className="hover:text-indigo-600 hover:underline" href={SITE.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram {SITE.instagramHandle}</a> ·{" "}
+            <a className="hover:text-indigo-600 hover:underline" href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
+          </p>
         </div>
       </footer>
     </div>
