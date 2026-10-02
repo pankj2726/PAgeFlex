@@ -70,6 +70,26 @@ export function About() {
       <p className="text-lg font-medium">{SITE.tagline}</p>
       <p>{SITE.description}</p>
       <p>{SITE.name} exists because most online PDF tools make you upload sensitive documents, sign up, or pay to remove a watermark. We wanted a tool where none of that is true.</p>
+      <h2>Who made it</h2>
+      <div className="lift flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-indigo-600 text-lg font-bold text-white" aria-hidden="true">
+          {SITE.author.split(" ").map((w) => w[0]).join("")}
+        </span>
+        <div>
+          <p className="font-semibold">Created and maintained by {SITE.author}</p>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+            {SITE.name} is built by {SITE.author}, an independent developer who wanted a PDF editor that respects your time and your data.
+          </p>
+          <p className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <a className="text-indigo-600 underline underline-offset-4" href={SITE.instagramUrl} target="_blank" rel="noopener noreferrer">
+              Instagram {SITE.instagramHandle}
+            </a>
+            <a className="text-indigo-600 underline underline-offset-4" href={`mailto:${SITE.contactEmail}`}>
+              {SITE.contactEmail}
+            </a>
+          </p>
+        </div>
+      </div>
       <h2>How it works</h2>
       <p>The page renders with pdf.js and edits are written with pdf-lib inside a Web Worker. Every file we produce is re-opened with a second PDF reader before you download it, so we can warn you if something is wrong.</p>
       <h2>Honest limitations</h2>
@@ -89,6 +109,18 @@ export function Contact() {
   return (
     <Page title="Contact" description={`How to reach the ${SITE.name} team with questions, bugs or privacy requests.`} path="/contact">
       <p>Questions, bug reports or privacy requests: email <a className="text-indigo-600 underline underline-offset-4" href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.</p>
+      <h2>Contact &amp; support</h2>
+      <ul>
+        <li>
+          Email (support &amp; contact): <a className="text-indigo-600 underline underline-offset-4" href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>
+        </li>
+        <li>
+          Instagram: <a className="text-indigo-600 underline underline-offset-4" href={SITE.instagramUrl} target="_blank" rel="noopener noreferrer">{SITE.instagramHandle}</a>
+        </li>
+      </ul>
+      <p>
+        Built and maintained by <strong>{SITE.author}</strong>.
+      </p>
       <p>Please <strong>do not attach confidential documents</strong>. Because we never receive your files, we can't look at your document anyway – a description of the steps that led to the problem (and your browser and version) is the most useful thing you can send.</p>
       <h2>Privacy requests</h2>
       <p>We hold no personal data about you beyond ordinary web-server logs. To erase everything stored locally, use <em>Clear my data</em> in the editor's ⚙ menu.</p>
